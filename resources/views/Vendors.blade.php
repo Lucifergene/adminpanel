@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+@extends('layouts.app')
+
+@section('content')
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
@@ -30,34 +33,27 @@
 	<script src="../../../../global_assets/js/demo_pages/datatables_basic.js"></script>
 	<!-- /theme JS files -->
 
-</head>
+</head> --}}
+{{-- <body> --}}
+<!-- Main navbar -->
+<!-- /main navbar -->
+<!-- Page content -->
+	 
+	{{-- @include('inc.top') --}}
 
-<body>
-
-	<!-- Main navbar -->
-	
-	<!-- /main navbar -->
-
-
-	<!-- Page content -->
-	 <?php
-include_once"include/top.php";
-?>
-
-	<!-- Page content -->
+<!-- Page content -->
 	<div class="page-content">
 
-	<?php
-include_once"include/sidebar.php";
-?>
+		{{-- @include('inc.sidebar') --}}
+	
 
-		<!-- /main sidebar -->
+<!-- /main sidebar -->
 
 
-		<!-- Main content -->
+<!-- Main content -->
 		<div class="content-wrapper">
 
-			<!-- Page header -->
+<!-- Page header -->
 			<div class="page-header page-header-light">
 				<div class="page-header-content header-elements-md-inline">
 					<div class="page-title d-flex">
@@ -229,15 +225,15 @@ include_once"include/sidebar.php";
 						</div>
 					</div>
 				</div>
-			<!-- /footer -->
-             <?php
-		include_once "include/footer.php";
-		?>
+			
+				<!-- /footer -->
+			{{-- @include('inc.footer') --}}
 		</div>
 		<!-- /main content -->
 
 	</div>
 	<!-- /page content -->
 
-</body>
-</html>
+{{-- </body>
+</html> --}}
+@endsection
