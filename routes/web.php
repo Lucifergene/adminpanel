@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('Vendors');
+    return view('Vendors'); 
 });
+
+Route::get('/', 'MessagesController@getMessages');
+
+Route::post('/vendors/submit', 'MessagesController@submit'); 

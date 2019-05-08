@@ -84,7 +84,8 @@
 						<h5 class="card-title">Listing all Vendors</h5>
 						<div class="header-elements">
 							<div class="box-tools pull-right">
-            	<td><button type="button" class="btn bg-primary" data-toggle="modal" data-target="#modal_theme_primary">Add New</button></td>
+            	<td>
+						<a class="btn" data-toggle="modal" href="#modal_theme_primary" >Launch Modal</a> <button type="button" class="btn bg-primary" data-toggle="modal" data-target="#modal_theme_primary">Add New</button></td>
             </div>
 	                	</div>
 					</div>
@@ -110,8 +111,8 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>1</td>
+							
+								{{-- <td>1</td>
 								<td><a href="#">Vendor Name2</a></td>
 								<td>13121123</td>
 								<td>132132123131</td>
@@ -120,14 +121,60 @@
 								<td>458770</td>
 								<td>Ranchi</td>
 								<td>Jharkhand</td>
-								<td>India</td>
-								<td><div class="list-icons">
-		                		<button type="button" class="btn btn-outline bg-primary border-primary text-primary-800 btn-icon"><i class="icon-bin"></i></button>
-		                		<button type="button" class="btn btn-outline bg-primary border-primary text-primary-800 btn-icon"><i class="icon-pencil7"></i></button>
-		                	</div></td>
-							</tr>
-							</tbody>
-						<tbody>
+								<td>India</td> --}}
+								@if(count($messages) > 0)
+								@foreach ($messages as $message)
+								<tr>
+									<td>{{$message->id}}</td>
+									<td><a href="#">{{$message->vendor_name}}</a></td>
+									<td>{{$message->gst_no}}</td>
+									<td>{{$message->pan_no}}</td>
+									<td><span class="badge badge-success">{{$message->address_1}}</span></td>
+									<td><span class="badge badge-success">{{$message->address_2}}</span></td>
+									<td>{{$message->pincode}}</td>
+									<td>{{$message->city}}</td>
+									<td>{{$message->state}}</td>
+									<td>{{$message->country}}</td>
+									<td><div class="list-icons">
+										<button type="button" class="btn btn-outline bg-primary border-primary text-primary-800 btn-icon"><i class="icon-bin"></i></button>
+										<button type="button" class="btn btn-outline bg-primary border-primary text-primary-800 btn-icon"><i class="icon-pencil7"></i></button>
+									</div></td>
+								</tr>
+								@endforeach
+								@endif
+								</tbody>
+
+									
+
+
+
+
+
+								
+								
+
+							
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+						{{-- <tbody>
 							<tr>
 								<td>2</td>
 								<td><a href="#">Vendor Name2</a></td>
@@ -144,7 +191,7 @@
 		                		<button type="button" class="btn btn-outline bg-primary border-primary text-primary-800 btn-icon"><i class="icon-pencil7"></i></button>
 		                	</div></td>
 							</tr>
-							</tbody>	
+							</tbody>	 --}}
 					</table>
 				</div>
 				<!-- /basic datatable -->
@@ -154,11 +201,13 @@
 				
 			</div>
 			
+			<!--ADD NEW FORM -->
 			<div id="modal_theme_primary" class="modal fade" tabindex="-1">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header bg-primary">
 								<h6 class="modal-title">Add Vendors</h6>
+								{!! Form::open(['url' => 'vendors/submit']) !!}
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
 							</div>
 
@@ -166,27 +215,37 @@
 						<div class="row">
 							<div class="col-md-6">
 								<div class="mb-4">
-									<b>Vendor name</b>
-									<input type="text" class="form-control typeahead-basic" placeholder="Vendor name">
+									{{Form::label('vendor_name', 'Vendor name')}}
+									{{Form::text('vendor_name', '', ['class' => 'form-control typeahead-basic', 'placeholder' => 'Vendor name'])}}
+									{{-- <b>Vendor name</b>
+									<input type="text" class="form-control typeahead-basic" placeholder="Vendor name"> --}}
 								</div>
 
 								<div class="mb-4">
-									<b>PAN NO</b>
-									<input type="text" class="form-control typeahead-bloodhound" placeholder="PAN NO">
+										{{Form::label('pan_no', 'PAN NO')}}
+										{{Form::text('pan_no', '', ['class' => 'form-control typeahead-bloodhound', 'placeholder' => 'PAN NO'])}}
+									{{-- <b>PAN NO</b>
+									<input type="text" class="form-control typeahead-bloodhound" placeholder="PAN NO"> --}}
 								</div>
 
 								<div class="mb-4">
-								<b>Address 2</b>	
+										{{Form::label('address_2', 'Address 2')}}
+										{{Form::text('address_2', '', ['class' => 'form-control typeahead-prefetched', 'placeholder' => 'Address 2'])}}
+								{{-- <b>Address 2</b>	
 									<input type="text" class="form-control typeahead-prefetched" placeholder="Address 2">
-								</div>
+								</div> --}}
 
 								<div class="mb-3">
-									<b>City</b>
-									<input type="text" class="form-control typeahead-remote" placeholder="City">
+										{{Form::label('city', 'City')}}
+										{{Form::text('city', '', ['class' => 'form-control typeahead-remote', 'placeholder' => 'City'])}}
+									{{-- <b>City</b>
+									<input type="text" class="form-control typeahead-remote" placeholder="City"> --}}
 								</div>
 								<div class="mb-4">
-									<b>Country</b>
-									<input type="text" class="form-control typeahead-custom-templates" placeholder="Country">
+										{{Form::label('country', 'Country')}}
+										{{Form::text('country', '', ['class' => 'form-control typeahead-templates', 'placeholder' => 'Country'])}}
+									{{-- <b>Country</b>
+									<input type="text" class="form-control typeahead-custom-templates" placeholder="Country"> --}}
 								</div>
 							</div>
 
@@ -194,23 +253,31 @@
 								
 
 								<div class="mb-4">
-									<b>GST NO</b>
-									<input type="text" class="form-control typeahead-multiple-datasets" placeholder="GST NO">
+									{{Form::label('gst_no', 'GST NO')}}
+									{{Form::text('gst_no', '', ['class' => 'form-control typeahead-datasets', 'placeholder' => 'GST NO'])}}
+									{{-- <b>GST NO</b>
+									<input type="text" class="form-control typeahead-multiple-datasets" placeholder="GST NO"> --}}
 								</div>
 
 								<div class="mb-4">
-									<b>Address 1</b>
+									{{Form::label('address_1', 'Address 1')}}
+									{{Form::text('address_1', '', ['class' => 'form-control typeahead-scrollable-menu', 'placeholder' => 'Address 1'])}}
+									{{-- <b>Address 1</b>
 									<div class="typeahead-scrollable">
-										<input type="text" class="form-control typeahead-scrollable-menu" placeholder="Address 1">
+										<input type="text" class="form-control typeahead-scrollable-menu" placeholder="Address 1"> --}}
 									</div>
 								</div>
                                 <div class="mb-4">
-									<b>Pin Code</b>
-									<input type="text" class="form-control typeahead-multiple-datasets" placeholder="Pin Code">
+									{{Form::label('pincode', 'Pin Code')}}
+									{{Form::text('pincode', '', ['class' => 'form-control typeahead-multiple-datasets', 'placeholder' => 'Pin Code'])}}
+									{{-- <b>Pin Code</b>
+									<input type="text" class="form-control typeahead-multiple-datasets" placeholder="Pin Code"> --}}
 								</div>
 								<div class="mb-4">
-									<b>State</b>
-									<input type="text" class="form-control typeahead-multiple-datasets" placeholder="State">
+									{{Form::label('state', 'State')}}
+									{{Form::text('state', '', ['class' => 'form-control typeahead-multiple-datasets', 'placeholder' => 'State'])}}
+									{{-- <b>State</b>
+									<input type="text" class="form-control typeahead-multiple-datasets" placeholder="State"> --}}
 								</div>
 								
 							</div>
@@ -219,9 +286,13 @@
 					</div>
 
 							<div class="modal-footer">
+								
 								<button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
-								<button type="button" class="btn bg-primary">Save changes</button>
+								{{Form::submit('Submit', ['class'=> 'btn bg-primary'])}}
+								
+								{{-- <button type="button" class="btn bg-primary">Save changes</button> --}}
 							</div>
+							{!! Form::close() !!}
 						</div>
 					</div>
 				</div>
